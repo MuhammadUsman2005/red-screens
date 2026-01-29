@@ -7,6 +7,7 @@ import MessagesScreen from "./screens/red/MessagesScreen";
 import ChatScreen from "./screens/red/ChatScreen";
 import InstitutesScreen from "./screens/red/InstitutesScreen";
 import HomeScreen from "./screens/red/HomeScreen";
+import MenteesScreen from "./screens/red/MenteesScreen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,10 +21,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<MessagesScreen />} />
           <Route path="/chat/:chatId" element={<ChatScreen />} />
-          {/* Placeholder routes for other nav items */}
           <Route path="/home" element={<HomeScreen />} />
           <Route path="/institutes" element={<InstitutesScreen />} />
-          <Route path="/mentees" element={<MessagesScreen />} />
+          <Route path="/mentees" element={<MenteesScreen />} />
           <Route path="/profile" element={<MessagesScreen />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
