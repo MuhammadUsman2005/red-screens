@@ -58,24 +58,47 @@ export const InstitutesIcon: React.FC<IconProps> = ({ className, size = 24, colo
     fill="none" 
     className={className}
   >
+    {/* Classical building with columns - matching Figma design */}
     <path 
-      d="M3 21H21" 
+      d="M2 20H22" 
       stroke={color} 
-      strokeWidth="2" 
+      strokeWidth="1.5" 
       strokeLinecap="round" 
-      strokeLinejoin="round"
     />
     <path 
-      d="M5 21V7L12 3L19 7V21" 
+      d="M4 20V10" 
       stroke={color} 
-      strokeWidth="2" 
+      strokeWidth="1.5" 
       strokeLinecap="round" 
-      strokeLinejoin="round"
     />
     <path 
-      d="M9 21V15H15V21" 
+      d="M8 20V10" 
       stroke={color} 
-      strokeWidth="2" 
+      strokeWidth="1.5" 
+      strokeLinecap="round" 
+    />
+    <path 
+      d="M12 20V10" 
+      stroke={color} 
+      strokeWidth="1.5" 
+      strokeLinecap="round" 
+    />
+    <path 
+      d="M16 20V10" 
+      stroke={color} 
+      strokeWidth="1.5" 
+      strokeLinecap="round" 
+    />
+    <path 
+      d="M20 20V10" 
+      stroke={color} 
+      strokeWidth="1.5" 
+      strokeLinecap="round" 
+    />
+    <path 
+      d="M2 10H22L12 4L2 10Z" 
+      stroke={color} 
+      strokeWidth="1.5" 
       strokeLinecap="round" 
       strokeLinejoin="round"
     />
