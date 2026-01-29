@@ -6,6 +6,8 @@ import annaAvatar from '@/assets/anna-avatar.png';
 import annaPost from '@/assets/anna-post.png';
 import ecowearAvatar from '@/assets/ecowear-avatar.png';
 import ecowearPost from '@/assets/ecowear-post.png';
+import daveAvatar from '@/assets/dave-avatar.png';
+import davePost from '@/assets/dave-post.png';
 
 interface Post {
   id: string;
@@ -101,6 +103,9 @@ const HomeScreen: React.FC = () => {
                   {post.username === 'EcoWear' && (
                     <img src={ecowearAvatar} alt={post.username} className="w-full h-full object-cover" />
                   )}
+                  {post.username === 'foodie_dave' && (
+                    <img src={daveAvatar} alt={post.username} className="w-full h-full object-cover" />
+                  )}
                 </div>
                 <div>
                   <div className="flex items-center gap-1">
@@ -137,6 +142,9 @@ const HomeScreen: React.FC = () => {
               )}
               {post.username === 'EcoWear' && (
                 <img src={ecowearPost} alt="Post" className="w-full h-full object-cover" />
+              )}
+              {post.username === 'foodie_dave' && (
+                <img src={davePost} alt="Post" className="w-full h-full object-cover" />
               )}
             </div>
 
