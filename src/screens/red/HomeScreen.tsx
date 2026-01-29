@@ -9,7 +9,6 @@ interface Post {
   timeAgo: string;
   isVerified: boolean;
   verifiedColor: 'green' | 'red';
-  imageUrl: string;
   likes: number;
   caption: string;
   comments: number;
@@ -24,7 +23,6 @@ const postsData: Post[] = [
     timeAgo: '2h ago',
     isVerified: true,
     verifiedColor: 'green',
-    imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
     likes: 1204,
     caption: 'Woke up to this incredible view. Feeling so grateful for moments like these. ✨',
     comments: 88,
@@ -35,7 +33,6 @@ const postsData: Post[] = [
     timeAgo: '',
     isVerified: true,
     verifiedColor: 'red',
-    imageUrl: 'https://images.unsplash.com/photo-1544923246-77307dd628b9?w=800&h=600&fit=crop',
     likes: 4512,
     caption: 'Embrace adventure with our new line of sustainable outdoor gear. Built for nature, by nature.',
     comments: 0,
@@ -48,7 +45,6 @@ const postsData: Post[] = [
     timeAgo: '8h ago',
     isVerified: true,
     verifiedColor: 'green',
-    imageUrl: 'https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=800&h=600&fit=crop',
     likes: 634,
     caption: 'Homemade pasta night was a success! 🍝 Who wants the recipe?',
     comments: 42,
@@ -95,9 +91,7 @@ const HomeScreen: React.FC = () => {
             <div className="flex items-center justify-between px-4 py-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center">
-                  <span className="text-gray-600 text-sm font-bold">
-                    {post.username.charAt(0).toUpperCase()}
-                  </span>
+                  {/* Empty avatar placeholder - no image */}
                 </div>
                 <div>
                   <div className="flex items-center gap-1">
@@ -127,13 +121,9 @@ const HomeScreen: React.FC = () => {
               </button>
             </div>
 
-            {/* Post Image */}
-            <div className="w-full aspect-square bg-gray-800">
-              <img 
-                src={post.imageUrl} 
-                alt="Post" 
-                className="w-full h-full object-cover"
-              />
+            {/* Post Image - Empty placeholder, no image added */}
+            <div className="w-full aspect-square bg-black/20">
+              {/* Image placeholder - actual images will be provided later */}
             </div>
 
             {/* Post Actions */}
