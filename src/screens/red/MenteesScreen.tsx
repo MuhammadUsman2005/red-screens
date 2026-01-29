@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
 import menteeAvatar from '../../assets/mentee-avatar.png';
+import dollarIcon from '../../assets/dollar-icon.png';
 
 interface Student {
   name: string;
@@ -64,9 +65,7 @@ const MenteesScreen: React.FC = () => {
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-white text-2xl font-extrabold tracking-wide">MENTEES</h1>
           {/* Dollar Icon */}
-          <div className="w-10 h-10 rounded-full border-2 border-red-500 flex items-center justify-center">
-            <span className="text-red-500 text-lg font-bold">$</span>
-          </div>
+          <img src={dollarIcon} alt="Dollar" className="w-10 h-10" />
         </div>
       </div>
 
