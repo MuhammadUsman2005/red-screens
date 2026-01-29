@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
+import menteeAvatar from '../../assets/mentee-avatar.png';
 
 interface Student {
   name: string;
@@ -109,9 +110,9 @@ const MenteesScreen: React.FC = () => {
                       style={{ borderBottom: index < classItem.students.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}
                     >
                       <div className="flex items-center gap-3">
-                        {/* Avatar - white background, no image */}
-                        <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center">
-                          {/* Empty avatar placeholder */}
+                        {/* Avatar */}
+                        <div className="w-10 h-10 rounded-full overflow-hidden">
+                          <img src={menteeAvatar} alt={student.name} className="w-full h-full object-cover" />
                         </div>
                         <div className="flex items-center gap-1">
                           <span className="text-white font-medium text-base">{student.name}</span>
