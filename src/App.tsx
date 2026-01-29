@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MessagesScreen from "./screens/red/MessagesScreen";
 import ChatScreen from "./screens/red/ChatScreen";
+import InstitutesScreen from "./screens/red/InstitutesScreen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,7 +21,7 @@ const App = () => (
           <Route path="/chat/:chatId" element={<ChatScreen />} />
           {/* Placeholder routes for other nav items */}
           <Route path="/home" element={<MessagesScreen />} />
-          <Route path="/institutes" element={<MessagesScreen />} />
+          <Route path="/institutes" element={<InstitutesScreen />} />
           <Route path="/mentees" element={<MessagesScreen />} />
           <Route path="/profile" element={<MessagesScreen />} />
           <Route path="*" element={<NotFound />} />
