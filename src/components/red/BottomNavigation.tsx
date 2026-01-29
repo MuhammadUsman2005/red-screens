@@ -12,7 +12,7 @@ interface NavItem {
   id: string;
   label: string;
   icon: React.FC<{ size?: number; color?: string }>;
-  path: string;
+  path: string | null;
 }
 
 const navItems: NavItem[] = [
@@ -20,7 +20,7 @@ const navItems: NavItem[] = [
   { id: 'messages', label: 'Messages', icon: MessagesIcon, path: '/' },
   { id: 'institutes', label: 'Institutes', icon: InstitutesIcon, path: '/institutes' },
   { id: 'mentees', label: 'Mentees', icon: MenteesIcon, path: '/mentees' },
-  { id: 'profile', label: 'Profile', icon: ProfileIcon, path: '/profile' },
+  { id: 'profile', label: 'Profile', icon: ProfileIcon, path: null },
 ];
 
 const BottomNavigation: React.FC = () => {
@@ -43,7 +43,7 @@ const BottomNavigation: React.FC = () => {
         return (
           <button
             key={item.id}
-            onClick={() => navigate(item.path)}
+            onClick={() => item.path && navigate(item.path)}
             className={`nav-item ${active ? 'nav-item-active' : ''}`}
           >
             <IconComponent 
