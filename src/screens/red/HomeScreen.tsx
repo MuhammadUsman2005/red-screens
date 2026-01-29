@@ -2,6 +2,8 @@ import React from 'react';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
 import itveLogo from '@/assets/itve-logo.png';
+import annaAvatar from '@/assets/anna-avatar.png';
+import annaPost from '@/assets/anna-post.png';
 
 interface Post {
   id: string;
@@ -91,7 +93,9 @@ const HomeScreen: React.FC = () => {
             <div className="flex items-center justify-between px-4 py-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center">
-                  {/* Empty avatar placeholder - no image */}
+                  {post.username === 'wanderlust_anna' && (
+                    <img src={annaAvatar} alt={post.username} className="w-full h-full object-cover" />
+                  )}
                 </div>
                 <div>
                   <div className="flex items-center gap-1">
@@ -121,9 +125,11 @@ const HomeScreen: React.FC = () => {
               </button>
             </div>
 
-            {/* Post Image - Empty placeholder, no image added */}
+            {/* Post Image */}
             <div className="w-full aspect-square bg-black/20">
-              {/* Image placeholder - actual images will be provided later */}
+              {post.username === 'wanderlust_anna' && (
+                <img src={annaPost} alt="Post" className="w-full h-full object-cover" />
+              )}
             </div>
 
             {/* Post Actions */}
