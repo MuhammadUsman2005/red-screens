@@ -37,8 +37,8 @@ export const InstitutesIcon: React.FC<IconProps> = ({ size = 24, color }) => (
   <img 
     src={navInstitutes} 
     alt="Institutes" 
-    width={size} 
-    height={size}
+    width={size + 6} 
+    height={size + 6}
     style={{ 
       filter: color === '#EF4444' ? 'none' : 'brightness(0) invert(1) opacity(0.6)'
     }}
