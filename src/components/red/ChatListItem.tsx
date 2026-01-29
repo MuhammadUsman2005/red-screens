@@ -10,7 +10,6 @@ export interface ChatContact {
   isOnline: boolean;
   hasUnread: boolean;
   verifiedType: 'blue' | 'green' | 'red' | null;
-  avatarColor?: string;
 }
 
 interface ChatListItemProps {
@@ -44,10 +43,7 @@ const ChatListItem: React.FC<ChatListItemProps> = ({ contact }) => {
     <div className="chat-list-item" onClick={handleClick}>
       {/* Avatar */}
       <div className="avatar-container">
-        <div 
-          className="avatar"
-          style={{ backgroundColor: contact.avatarColor || '#1a1a2e' }}
-        />
+        <div className="avatar" />
         {contact.isOnline && <div className="avatar-online" />}
       </div>
 

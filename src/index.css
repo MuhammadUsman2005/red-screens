@@ -144,7 +144,8 @@
   }
 
   .avatar {
-    @apply w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center overflow-hidden;
+    @apply w-12 h-12 rounded-full flex items-center justify-center overflow-hidden;
+    background: white;
   }
 
   .avatar-online {

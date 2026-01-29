@@ -1,19 +1,12 @@
 import React from 'react';
 
 const StatusBar: React.FC = () => {
-  const getCurrentTime = () => {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const ampm = hours >= 12 ? 'pm' : 'am';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    return `${hours}:${minutes} ${ampm}`;
-  };
+  // Fixed time as per Figma design
+  const displayTime = '11:39 am';
 
   return (
     <div className="status-bar">
-      <span>{getCurrentTime()}</span>
+      <span>{displayTime}</span>
       <div className="flex items-center gap-1">
         {/* Signal bars */}
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none">

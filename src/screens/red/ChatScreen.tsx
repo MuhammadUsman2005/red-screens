@@ -68,7 +68,7 @@ const ChatScreen: React.FC = () => {
         </button>
 
         <div className="avatar-container">
-          <div className="avatar" style={{ backgroundColor: '#1a1a2e' }} />
+          <div className="avatar" />
         </div>
 
         <div className="flex-1">
