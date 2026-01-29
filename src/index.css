@@ -138,6 +138,60 @@
     background: hsl(var(--card-bg));
   }
 
+  /* Institutes Screen Styles */
+  .institutes-header-button {
+    @apply w-full flex items-center justify-between px-5 py-3 rounded-full;
+    background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .institute-item {
+    @apply flex items-center justify-between px-4 py-4;
+    background: linear-gradient(180deg, rgba(180,50,50,0.9) 0%, rgba(120,30,30,0.8) 100%);
+    border-radius: 0;
+  }
+
+  .institute-classes {
+    background: linear-gradient(180deg, rgba(100,25,25,0.9) 0%, rgba(80,20,20,0.8) 100%);
+  }
+
+  .class-item {
+    @apply flex items-center justify-between px-4 py-3;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .class-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Add Institute Modal */
+  .add-institute-modal {
+    @apply rounded-t-3xl px-6 py-6;
+    background: linear-gradient(180deg, #E8E0E0 0%, #D4C8C8 100%);
+  }
+
+  .modal-input-field {
+    @apply px-5 py-4 rounded-full text-left;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .modal-dropdown {
+    @apply mt-2 rounded-xl overflow-hidden;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .map-container {
+    @apply rounded-xl overflow-hidden;
+    height: 160px;
+  }
+
+  .add-institute-button {
+    @apply w-full py-4 rounded-full text-white font-semibold text-base;
+    background: #DC2626;
+  }
+
   /* Avatar */
   .avatar-container {
     @apply relative flex-shrink-0;
