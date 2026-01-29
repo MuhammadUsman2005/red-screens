@@ -8,6 +8,7 @@ import ecowearAvatar from '@/assets/ecowear-avatar.png';
 import ecowearPost from '@/assets/ecowear-post.png';
 import daveAvatar from '@/assets/dave-avatar.png';
 import davePost from '@/assets/dave-post.png';
+import notificationIcon from '@/assets/notification-icon.png';
 
 interface Post {
   id: string;
@@ -80,11 +81,9 @@ const HomeScreen: React.FC = () => {
               <path d="M16 16L20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           </button>
-          {/* Bookmark/Flag Icon */}
-          <button className="text-red-500">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M5 3C5 2.44772 5.44772 2 6 2H18C18.5523 2 19 2.44772 19 3V21C19 21.3746 18.7907 21.7178 18.4576 21.8892C18.1245 22.0606 17.7236 22.0315 17.4188 21.8137L12 18.0289L6.58124 21.8137C6.27642 22.0315 5.87549 22.0606 5.54242 21.8892C5.20935 21.7178 5 21.3746 5 21V3Z"/>
-            </svg>
+          {/* Notification Icon */}
+          <button>
+            <img src={notificationIcon} alt="Notifications" className="w-6 h-6" />
           </button>
         </div>
       </div>
