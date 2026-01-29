@@ -4,6 +4,8 @@ import BottomNavigation from '../../components/red/BottomNavigation';
 import itveLogo from '@/assets/itve-logo.png';
 import annaAvatar from '@/assets/anna-avatar.png';
 import annaPost from '@/assets/anna-post.png';
+import ecowearAvatar from '@/assets/ecowear-avatar.png';
+import ecowearPost from '@/assets/ecowear-post.png';
 
 interface Post {
   id: string;
@@ -96,6 +98,9 @@ const HomeScreen: React.FC = () => {
                   {post.username === 'wanderlust_anna' && (
                     <img src={annaAvatar} alt={post.username} className="w-full h-full object-cover" />
                   )}
+                  {post.username === 'EcoWear' && (
+                    <img src={ecowearAvatar} alt={post.username} className="w-full h-full object-cover" />
+                  )}
                 </div>
                 <div>
                   <div className="flex items-center gap-1">
@@ -129,6 +134,9 @@ const HomeScreen: React.FC = () => {
             <div className="w-full aspect-square bg-black/20">
               {post.username === 'wanderlust_anna' && (
                 <img src={annaPost} alt="Post" className="w-full h-full object-cover" />
+              )}
+              {post.username === 'EcoWear' && (
+                <img src={ecowearPost} alt="Post" className="w-full h-full object-cover" />
               )}
             </div>
 
