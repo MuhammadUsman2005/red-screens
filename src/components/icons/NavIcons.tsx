@@ -1,4 +1,7 @@
 import React from 'react';
+import navHome from '@/assets/nav-home.png';
+import navMessages from '@/assets/nav-messages.png';
+import navInstitutes from '@/assets/nav-institutes.png';
 
 interface IconProps {
   className?: string;
@@ -6,103 +9,40 @@ interface IconProps {
   color?: string;
 }
 
-export const HomeIcon: React.FC<IconProps> = ({ className, size = 24, color = 'currentColor' }) => (
-  <svg 
+export const HomeIcon: React.FC<IconProps> = ({ size = 24, color }) => (
+  <img 
+    src={navHome} 
+    alt="Home" 
     width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    className={className}
-  >
-    <path 
-      d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" 
-      stroke={color} 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-    />
-    <path 
-      d="M9 22V12H15V22" 
-      stroke={color} 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-    />
-  </svg>
+    height={size}
+    style={{ 
+      filter: color === '#EF4444' ? 'none' : 'brightness(0) invert(1) opacity(0.6)'
+    }}
+  />
 );
 
-export const MessagesIcon: React.FC<IconProps> = ({ className, size = 24, color = 'currentColor' }) => (
-  <svg 
+export const MessagesIcon: React.FC<IconProps> = ({ size = 24, color }) => (
+  <img 
+    src={navMessages} 
+    alt="Messages" 
     width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    className={className}
-  >
-    <path 
-      d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" 
-      stroke={color} 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-      fill={color === '#EF4444' ? color : 'none'}
-    />
-  </svg>
+    height={size}
+    style={{ 
+      filter: color === '#EF4444' ? 'none' : 'brightness(0) invert(1) opacity(0.6)'
+    }}
+  />
 );
 
-export const InstitutesIcon: React.FC<IconProps> = ({ className, size = 24, color = 'currentColor' }) => (
-  <svg 
+export const InstitutesIcon: React.FC<IconProps> = ({ size = 24, color }) => (
+  <img 
+    src={navInstitutes} 
+    alt="Institutes" 
     width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    className={className}
-  >
-    {/* Classical building with columns - matching Figma design */}
-    <path 
-      d="M2 20H22" 
-      stroke={color} 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-    />
-    <path 
-      d="M4 20V10" 
-      stroke={color} 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-    />
-    <path 
-      d="M8 20V10" 
-      stroke={color} 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-    />
-    <path 
-      d="M12 20V10" 
-      stroke={color} 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-    />
-    <path 
-      d="M16 20V10" 
-      stroke={color} 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-    />
-    <path 
-      d="M20 20V10" 
-      stroke={color} 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-    />
-    <path 
-      d="M2 10H22L12 4L2 10Z" 
-      stroke={color} 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-    />
-  </svg>
+    height={size}
+    style={{ 
+      filter: color === '#EF4444' ? 'none' : 'brightness(0) invert(1) opacity(0.6)'
+    }}
+  />
 );
 
 export const MenteesIcon: React.FC<IconProps> = ({ className, size = 24, color = 'currentColor' }) => (
