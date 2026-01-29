@@ -24,7 +24,7 @@ const App = () => (
           <Route path="/home" element={<HomeScreen />} />
           <Route path="/institutes" element={<InstitutesScreen />} />
           <Route path="/mentees" element={<MenteesScreen />} />
-          <Route path="/profile" element={<MessagesScreen />} />
+          {/* Profile route removed - no screen needed */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
