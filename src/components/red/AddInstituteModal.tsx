@@ -22,29 +22,35 @@ const AddInstituteModal: React.FC<AddInstituteModalProps> = ({ isOpen, onClose }
         onClick={onClose}
       />
       
-      {/* Modal */}
+      {/* Modal - Using Red Gradient Background */}
       <div className="fixed inset-x-0 bottom-0 z-50 max-w-md mx-auto">
-        <div className="add-institute-modal">
+        <div 
+          className="rounded-t-3xl px-6 py-6"
+          style={{
+            background: 'linear-gradient(180deg, #852121 0%, #4E0C0C 50%, #380303 100%)'
+          }}
+        >
           {/* Header */}
           <div className="flex items-center gap-3 mb-6">
             <button 
               onClick={onClose}
-              className="text-black"
+              className="text-white"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <h2 className="text-black text-xl font-semibold">Add Institute</h2>
+            <h2 className="text-white text-xl font-bold">Add Institute</h2>
           </div>
 
           {/* Type of Institute Dropdown */}
           <div className="mb-4">
             <button 
               onClick={() => setShowDropdown(!showDropdown)}
-              className="modal-input-field w-full flex items-center justify-between"
+              className="w-full flex items-center justify-between px-5 py-4 rounded-full text-left"
+              style={{ background: 'rgba(0,0,0,0.3)' }}
             >
-              <span className={instituteType ? 'text-red-500' : 'text-red-400'}>
+              <span className={instituteType ? 'text-white font-medium' : 'text-white/70'}>
                 {instituteType || 'Type of Institute'}
               </span>
               <svg 
@@ -54,12 +60,12 @@ const AddInstituteModal: React.FC<AddInstituteModalProps> = ({ isOpen, onClose }
                 fill="none"
                 className={`transition-transform ${showDropdown ? 'rotate-180' : ''}`}
               >
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
             
             {showDropdown && (
-              <div className="modal-dropdown">
+              <div className="mt-2 rounded-xl overflow-hidden" style={{ background: 'rgba(0,0,0,0.4)' }}>
                 {instituteTypes.map((type) => (
                   <button
                     key={type}
@@ -67,7 +73,7 @@ const AddInstituteModal: React.FC<AddInstituteModalProps> = ({ isOpen, onClose }
                       setInstituteType(type);
                       setShowDropdown(false);
                     }}
-                    className="w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-100"
+                    className="w-full text-left px-5 py-3 text-white hover:bg-white/10 transition-colors"
                   >
                     {type}
                   </button>
@@ -83,42 +89,33 @@ const AddInstituteModal: React.FC<AddInstituteModalProps> = ({ isOpen, onClose }
               placeholder="Name of Institute"
               value={instituteName}
               onChange={(e) => setInstituteName(e.target.value)}
-              className="modal-input-field w-full text-red-500 placeholder-red-400"
+              className="w-full px-5 py-4 rounded-full text-white placeholder-white/70"
+              style={{ background: 'rgba(0,0,0,0.3)', border: 'none', outline: 'none' }}
             />
           </div>
 
           {/* Location Section */}
           <div className="mb-6">
-            <h3 className="text-black font-semibold text-lg mb-3">Location</h3>
-            <div className="map-container">
+            <h3 className="text-white font-bold text-lg mb-3">Location</h3>
+            <div className="rounded-xl overflow-hidden h-40">
               {/* Static map placeholder matching the design */}
-              <div className="w-full h-full bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden">
-                <img 
-                  src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/67.0011,24.8607,12,0/340x160@2x?access_token=pk.placeholder"
-                  alt="Map"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // Fallback to a styled placeholder if map fails
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = `
-                      <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                        <div class="text-center">
-                          <svg class="w-12 h-12 mx-auto text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                          </svg>
-                          <p class="text-gray-500 text-sm">Karachi, Pakistan</p>
-                        </div>
-                      </div>
-                    `;
-                  }}
-                />
+              <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+                <div className="text-center">
+                  <svg className="w-10 h-10 mx-auto text-gray-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  <p className="text-gray-600 text-sm font-medium">Karachi, Pakistan</p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Add Institute Button */}
-          <button className="add-institute-button">
+          <button 
+            className="w-full py-4 rounded-full text-white font-bold text-base"
+            style={{ background: '#DC2626' }}
+          >
             Add Institute
           </button>
         </div>

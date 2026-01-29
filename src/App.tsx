@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MessagesScreen from "./screens/red/MessagesScreen";
 import ChatScreen from "./screens/red/ChatScreen";
 import InstitutesScreen from "./screens/red/InstitutesScreen";
+import HomeScreen from "./screens/red/HomeScreen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,7 +21,7 @@ const App = () => (
           <Route path="/" element={<MessagesScreen />} />
           <Route path="/chat/:chatId" element={<ChatScreen />} />
           {/* Placeholder routes for other nav items */}
-          <Route path="/home" element={<MessagesScreen />} />
+          <Route path="/home" element={<HomeScreen />} />
           <Route path="/institutes" element={<InstitutesScreen />} />
           <Route path="/mentees" element={<MessagesScreen />} />
           <Route path="/profile" element={<MessagesScreen />} />

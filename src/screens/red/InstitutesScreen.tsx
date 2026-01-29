@@ -55,7 +55,7 @@ const InstitutesScreen: React.FC = () => {
       {/* Header */}
       <div className="px-4 pt-4 pb-3">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-white text-2xl font-bold tracking-wide">INSTITUTES</h1>
+          <h1 className="text-white text-2xl font-extrabold tracking-wide">INSTITUTES</h1>
           {/* Dollar Icon */}
           <div className="w-10 h-10 rounded-full border-2 border-red-500 flex items-center justify-center">
             <span className="text-red-500 text-lg font-bold">$</span>
@@ -67,7 +67,7 @@ const InstitutesScreen: React.FC = () => {
           onClick={() => setShowAddModal(true)}
           className="institutes-header-button"
         >
-          <span className="text-white font-semibold text-base tracking-wide">SCHOOL/COLLEGES</span>
+          <span className="text-white font-bold text-base tracking-wide">SCHOOL/COLLEGES</span>
           <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M10 4V16M4 10H16" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
@@ -88,7 +88,7 @@ const InstitutesScreen: React.FC = () => {
                 onClick={() => toggleInstitute(institute.id)}
                 className="institute-item w-full"
               >
-                <span className="text-white font-semibold text-lg">{institute.name}</span>
+                <span className="text-white font-bold text-lg">{institute.name}</span>
                 <div className="flex items-center gap-2">
                   <span className="text-white/70 text-sm">{institute.code}</span>
                   <svg 
@@ -111,7 +111,7 @@ const InstitutesScreen: React.FC = () => {
                       key={index} 
                       className="class-item"
                     >
-                      <span className="text-white/90 text-base">{classItem.name}</span>
+                      <span className="text-white/90 text-base font-semibold">{classItem.name}</span>
                       <span className="text-white/60 text-sm">{classItem.code}</span>
                     </div>
                   ))}
