@@ -117,7 +117,7 @@ const MenteesScreen: React.FC = () => {
                         <div className="flex items-center gap-1">
                           <span className={`font-medium text-base ${index < 4 ? 'text-red-500' : 'text-white'}`}>{student.name}</span>
                           {student.isVerified && (
-                            <img src={verifiedBadge} alt="Verified" className="w-4 h-4" />
+                            <img src={verifiedBadge} alt="Verified" className="w-5 h-5" />
                           )}
                         </div>
                       </div>
