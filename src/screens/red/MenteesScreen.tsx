@@ -3,6 +3,7 @@ import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
 import menteeAvatar from '../../assets/mentee-avatar.png';
 import dollarIcon from '../../assets/dollar-icon.png';
+import verifiedBadge from '../../assets/verified-badge-blue.png';
 
 interface Student {
   name: string;
@@ -114,16 +115,9 @@ const MenteesScreen: React.FC = () => {
                           <img src={menteeAvatar} alt={student.name} className="w-full h-full object-cover" />
                         </div>
                         <div className="flex items-center gap-1">
-                          <span className="text-white font-medium text-base">{student.name}</span>
+                          <span className={`font-medium text-base ${index < 4 ? 'text-red-500' : 'text-white'}`}>{student.name}</span>
                           {student.isVerified && (
-                            <div 
-                              className="w-4 h-4 rounded-full flex items-center justify-center"
-                              style={{ background: '#22C55E' }}
-                            >
-                              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                <path d="M2 5L4 7L8 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
-                            </div>
+                            <img src={verifiedBadge} alt="Verified" className="w-4 h-4" />
                           )}
                         </div>
                       </div>
