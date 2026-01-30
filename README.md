@@ -24,8 +24,6 @@ The UI follows the Figma design closely.
 
 Screens are organized for clarity and scalability.
 
-No unnecessary features or experimental code have been added.
-
 Any small technical adjustments (safe area, platform handling) are kept minimal.
 
 Design reference:
