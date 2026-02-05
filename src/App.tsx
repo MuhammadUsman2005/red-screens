@@ -8,6 +8,8 @@ import ChatScreen from "./screens/red/ChatScreen";
 import InstitutesScreen from "./screens/red/InstitutesScreen";
 import HomeScreen from "./screens/red/HomeScreen";
 import MenteesScreen from "./screens/red/MenteesScreen";
+import SearchScreen from "./screens/red/SearchScreen";
+import NotificationsScreen from "./screens/red/NotificationsScreen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +24,8 @@ const App = () => (
           <Route path="/" element={<MessagesScreen />} />
           <Route path="/chat/:chatId" element={<ChatScreen />} />
           <Route path="/home" element={<HomeScreen />} />
+          <Route path="/search" element={<SearchScreen />} />
+          <Route path="/notifications" element={<NotificationsScreen />} />
           <Route path="/institutes" element={<InstitutesScreen />} />
           <Route path="/mentees" element={<MenteesScreen />} />
           {/* Profile route removed - no screen needed */}

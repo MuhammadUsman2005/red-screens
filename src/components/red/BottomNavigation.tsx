@@ -4,9 +4,9 @@ import {
   HomeIcon, 
   MessagesIcon, 
   InstitutesIcon, 
-  MenteesIcon, 
-  ProfileIcon 
+  MenteesIcon
 } from '../icons/NavIcons';
+import profileIcon from '@/assets/profile-icon.png';
 
 interface NavItem {
   id: string;
@@ -15,12 +15,24 @@ interface NavItem {
   path: string | null;
 }
 
+const ProfileIconComponent: React.FC<{ size?: number; color?: string }> = ({ size = 24, color }) => (
+  <img 
+    src={profileIcon} 
+    alt="Profile" 
+    width={size} 
+    height={size}
+    style={{ 
+      filter: color === '#EF4444' ? 'none' : 'brightness(0) invert(1) opacity(0.6)'
+    }}
+  />
+);
+
 const navItems: NavItem[] = [
   { id: 'home', label: 'Home', icon: HomeIcon, path: '/home' },
   { id: 'messages', label: 'Messages', icon: MessagesIcon, path: '/' },
   { id: 'institutes', label: 'Institutes', icon: InstitutesIcon, path: '/institutes' },
   { id: 'mentees', label: 'Mentees', icon: MenteesIcon, path: '/mentees' },
-  { id: 'profile', label: 'Profile', icon: ProfileIcon, path: null },
+  { id: 'profile', label: 'Profile', icon: ProfileIconComponent, path: null },
 ];
 
 const BottomNavigation: React.FC = () => {

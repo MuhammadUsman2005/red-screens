@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
 import itveLogo from '@/assets/itve-logo.png';
@@ -59,6 +60,8 @@ const postsData: Post[] = [
 ];
 
 const HomeScreen: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="app-container">
       <StatusBar />
@@ -75,14 +78,14 @@ const HomeScreen: React.FC = () => {
         </div>
         <div className="flex items-center gap-4">
           {/* Search Icon */}
-          <button className="text-white">
+          <button className="text-white" onClick={() => navigate('/search')}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2"/>
               <path d="M16 16L20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           </button>
           {/* Notification Icon */}
-          <button>
+          <button onClick={() => navigate('/notifications')}>
             <img src={notificationIcon} alt="Notifications" className="w-6 h-6" />
           </button>
         </div>
