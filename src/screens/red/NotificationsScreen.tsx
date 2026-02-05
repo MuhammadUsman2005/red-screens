@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
+import sophiaAvatar from '../../assets/sophia-avatar.png';
+import ethanAvatar from '../../assets/ethan-avatar.png';
+import avaAvatar from '../../assets/ava-avatar.png';
+import oliverAvatar from '../../assets/oliver-avatar.png';
 
 type TabType = 'social' | 'student';
 
@@ -11,6 +15,7 @@ interface SocialNotification {
   user: string;
   action: string;
   time: string;
+  avatar?: string;
 }
 
 interface AchievementNotification {
@@ -29,10 +34,10 @@ interface StudentNotification {
 }
 
 const socialNotificationsToday: SocialNotification[] = [
-  { id: '1', type: 'like', user: 'Sophia', action: 'liked your post', time: '1h' },
-  { id: '2', type: 'comment', user: 'Ethan', action: 'commented on your post', time: '3h' },
-  { id: '3', type: 'follow', user: 'Ava', action: 'followed you', time: '4h' },
-  { id: '4', type: 'request', user: 'Oliver', action: 'accepted your request', time: '5h' },
+  { id: '1', type: 'like', user: 'Sophia', action: 'liked your post', time: '1h', avatar: sophiaAvatar },
+  { id: '2', type: 'comment', user: 'Ethan', action: 'commented on your post', time: '3h', avatar: ethanAvatar },
+  { id: '3', type: 'follow', user: 'Ava', action: 'followed you', time: '4h', avatar: avaAvatar },
+  { id: '4', type: 'request', user: 'Oliver', action: 'accepted your request', time: '5h', avatar: oliverAvatar },
 ];
 
 const achievementNotifications: AchievementNotification[] = [
@@ -63,7 +68,9 @@ const NotificationsScreen: React.FC = () => {
           {socialNotificationsToday.map((notification) => (
             <div key={notification.id} className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
-                {/* Avatar placeholder */}
+                {notification.avatar && (
+                  <img src={notification.avatar} alt={notification.user} className="w-full h-full object-cover" />
+                )}
               </div>
               <div className="flex-1">
                 <p className="text-white text-sm">
@@ -82,9 +89,9 @@ const NotificationsScreen: React.FC = () => {
         <div className="space-y-4">
           {achievementNotifications.map((notification) => (
             <div key={notification.id} className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#7A2828] flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-full bg-[#EF4444] flex items-center justify-center flex-shrink-0">
                 {notification.icon === 'trophy' ? (
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth="2">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                     <path d="M6 9H4.5C3.67 9 3 8.33 3 7.5V6C3 5.17 3.67 4.5 4.5 4.5H6" strokeLinecap="round"/>
                     <path d="M18 9H19.5C20.33 9 21 8.33 21 7.5V6C21 5.17 20.33 4.5 19.5 4.5H18" strokeLinecap="round"/>
                     <path d="M6 4.5H18V11C18 14.31 15.31 17 12 17C8.69 17 6 14.31 6 11V4.5Z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -92,7 +99,7 @@ const NotificationsScreen: React.FC = () => {
                     <path d="M8 20H16" strokeLinecap="round"/>
                   </svg>
                 ) : (
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth="2">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" strokeLinejoin="round"/>
                   </svg>
                 )}
