@@ -11,7 +11,7 @@ const AddInstituteModal: React.FC<AddInstituteModalProps> = ({ isOpen, onClose }
   const [instituteName, setInstituteName] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const instituteTypes = ['School', 'College', 'University', 'Institute'];
+  const instituteTypes = ['School', 'College', 'General Public', 'Donation'];
 
   if (!isOpen) return null;
 
@@ -41,7 +41,7 @@ const AddInstituteModal: React.FC<AddInstituteModalProps> = ({ isOpen, onClose }
                 <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <h2 className="text-white text-xl font-bold">Add Institute</h2>
+            <h2 className="text-white text-xl font-bold">Generate Promo Code</h2>
           </div>
 
           {/* Type of Institute Dropdown */}
@@ -107,12 +107,12 @@ const AddInstituteModal: React.FC<AddInstituteModalProps> = ({ isOpen, onClose }
             </div>
           </div>
 
-          {/* Add Institute Button */}
+          {/* Generate Promo Code Button */}
           <button 
             className="w-full py-4 rounded-full text-white font-bold text-base"
             style={{ background: '#DC2626' }}
           >
-            Add Institute
+            Generate Promo Code
           </button>
         </div>
       </div>
