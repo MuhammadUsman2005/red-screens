@@ -6,6 +6,11 @@ import sophiaAvatar from '../../assets/sophia-avatar.png';
 import ethanAvatar from '../../assets/ethan-avatar.png';
 import avaAvatar from '../../assets/ava-avatar.png';
 import oliverAvatar from '../../assets/oliver-avatar.png';
+import sophiaStudentAvatar from '../../assets/sophia-student-avatar.png';
+import liamAvatar from '../../assets/liam-avatar.png';
+import ethanStudentAvatar from '../../assets/ethan-student-avatar.png';
+import avaStudentAvatar from '../../assets/ava-student-avatar.png';
+import oliverStudentAvatar from '../../assets/oliver-student-avatar.png';
 
 type TabType = 'social' | 'student';
 
@@ -31,6 +36,7 @@ interface StudentNotification {
   user: string;
   action: string;
   time: string;
+  avatar?: string;
 }
 
 const socialNotificationsToday: SocialNotification[] = [
@@ -48,11 +54,11 @@ const achievementNotifications: AchievementNotification[] = [
 ];
 
 const studentNotificationsToday: StudentNotification[] = [
-  { id: '1', user: 'Sophia', action: 'secured ABC Scholarship', time: '1h' },
-  { id: '2', user: 'Liam', action: 'started AI Diploma Journey', time: '2h' },
-  { id: '3', user: 'Ethan', action: 'secured job at AYASC pvt ltd', time: '3h' },
-  { id: '4', user: 'Ava', action: 'completed her AI Diploma', time: '4h' },
-  { id: '5', user: 'Oliver', action: 'achieved 2nd position in AI Diploma', time: '5h' },
+  { id: '1', user: 'Sophia', action: 'secured ABC Scholarship', time: '1h', avatar: sophiaStudentAvatar },
+  { id: '2', user: 'Liam', action: 'started AI Diploma Journey', time: '2h', avatar: liamAvatar },
+  { id: '3', user: 'Ethan', action: 'secured job at AYASC pvt ltd', time: '3h', avatar: ethanStudentAvatar },
+  { id: '4', user: 'Ava', action: 'completed her AI Diploma', time: '4h', avatar: avaStudentAvatar },
+  { id: '5', user: 'Oliver', action: 'achieved 2nd position in AI Diploma', time: '5h', avatar: oliverStudentAvatar },
 ];
 
 const NotificationsScreen: React.FC = () => {
@@ -132,7 +138,9 @@ const NotificationsScreen: React.FC = () => {
           {studentNotificationsToday.map((notification) => (
             <div key={notification.id} className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
-                {/* Avatar placeholder */}
+                {notification.avatar && (
+                  <img src={notification.avatar} alt={notification.user} className="w-full h-full object-cover" />
+                )}
               </div>
               <div className="flex-1">
                 <p className="text-white text-sm">

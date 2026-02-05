@@ -58,10 +58,12 @@ const BottomNavigation: React.FC = () => {
             onClick={() => item.path && navigate(item.path)}
             className={`nav-item ${active ? 'nav-item-active' : ''}`}
           >
-            <IconComponent 
-              size={22} 
-              color={active ? '#EF4444' : 'rgba(255, 255, 255, 0.6)'} 
-            />
+            <div className="nav-icon-wrapper flex items-center justify-center">
+              <IconComponent 
+                size={22} 
+                color={active ? '#EF4444' : 'rgba(255, 255, 255, 0.6)'} 
+              />
+            </div>
             <span className="nav-item-text">{item.label}</span>
           </button>
         );

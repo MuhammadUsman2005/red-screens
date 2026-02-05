@@ -241,11 +241,16 @@
   }
 
   .nav-item {
-    @apply flex flex-col items-center gap-1 py-2 px-4 rounded-xl transition-all duration-200;
+    @apply flex flex-col items-center gap-1 py-2 px-4 transition-all duration-200;
+  }
+
+  .nav-item-active .nav-icon-wrapper {
+    @apply w-12 h-12 rounded-full flex items-center justify-center;
+    background: radial-gradient(circle, rgba(239,68,68,0.6) 0%, rgba(239,68,68,0.3) 50%, transparent 70%);
+    box-shadow: 0 0 20px rgba(239,68,68,0.5), 0 0 40px rgba(239,68,68,0.3);
   }
 
   .nav-item-active {
-    @apply bg-red-600/30;
   }
 
   .nav-item-text {
