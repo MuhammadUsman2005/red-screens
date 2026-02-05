@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   HomeIcon, 
   MessagesIcon, 
-  InstitutesIcon, 
+  PromoIcon, 
   MenteesIcon
 } from '../icons/NavIcons';
 import profileIcon from '@/assets/profile-icon.png';
@@ -30,7 +30,7 @@ const ProfileIconComponent: React.FC<{ size?: number; color?: string }> = ({ siz
 const navItems: NavItem[] = [
   { id: 'home', label: 'Home', icon: HomeIcon, path: '/home' },
   { id: 'messages', label: 'Messages', icon: MessagesIcon, path: '/' },
-  { id: 'institutes', label: 'Institutes', icon: InstitutesIcon, path: '/institutes' },
+  { id: 'promo', label: 'Promo', icon: PromoIcon, path: '/institutes' },
   { id: 'mentees', label: 'Mentees', icon: MenteesIcon, path: '/mentees' },
   { id: 'profile', label: 'Profile', icon: ProfileIconComponent, path: null },
 ];
