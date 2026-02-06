@@ -10,6 +10,7 @@ import HomeScreen from "./screens/red/HomeScreen";
 import MenteesScreen from "./screens/red/MenteesScreen";
 import SearchScreen from "./screens/red/SearchScreen";
 import NotificationsScreen from "./screens/red/NotificationsScreen";
+import ProfileScreen from "./screens/red/ProfileScreen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +29,7 @@ const App = () => (
           <Route path="/notifications" element={<NotificationsScreen />} />
           <Route path="/institutes" element={<InstitutesScreen />} />
           <Route path="/mentees" element={<MenteesScreen />} />
-          {/* Profile route removed - no screen needed */}
+          <Route path="/profile" element={<ProfileScreen />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
