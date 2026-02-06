@@ -18,4 +18,11 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    esbuild: {
+      loader: {
+        '.js': 'jsx',
+      },
+    },
+  },
 }));

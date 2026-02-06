@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { View, Text, Image, TextInput, TouchableOpacity } from '../../components/primitives';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
 import { BackArrowIcon } from '../../components/icons/NavIcons';
@@ -38,72 +39,71 @@ const SearchScreen = () => {
   };
 
   return (
-    <div className="app-container">
+    <View className="app-container">
       <StatusBar />
-      
+
       {/* Header */}
-      <div className="flex items-center px-4 py-3">
-        <button onClick={() => navigate('/home')} className="text-white mr-4">
+      <View className="flex items-center px-4 py-3">
+        <TouchableOpacity onPress={() => navigate('/home')} className="text-white mr-4">
           <BackArrowIcon size={24} color="white" />
-        </button>
-        <h1 className="text-white text-xl font-semibold flex-1 text-center pr-10">Search</h1>
-      </div>
+        </TouchableOpacity>
+        <Text className="text-white text-xl font-semibold flex-1 text-center pr-10">Search</Text>
+      </View>
 
       {/* Search Input */}
-      <div className="px-4 mb-6">
-        <div className="relative">
-          <div className="absolute left-4 top-1/2 -translate-y-1/2">
+      <View className="px-4 mb-6">
+        <View className="relative">
+          <View className="absolute left-4 top-1/2 -translate-y-1/2">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2">
               <circle cx="11" cy="11" r="7"/>
               <path d="M16 16L20 20" strokeLinecap="round"/>
             </svg>
-          </div>
-          <input
-            type="text"
+          </View>
+          <TextInput
             placeholder="Search"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChangeText={setSearchQuery}
             className="w-full bg-[#5A1A1A] rounded-full py-3 pl-12 pr-12 text-white placeholder-white/60 text-sm outline-none border border-white/20"
           />
-          <button 
-            onClick={clearSearch}
+          <TouchableOpacity
+            onPress={clearSearch}
             className="absolute right-4 top-1/2 -translate-y-1/2"
           >
-            <div className="w-5 h-5 rounded-full border border-white/60 flex items-center justify-center">
+            <View className="w-5 h-5 rounded-full border border-white/60 flex items-center justify-center">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5">
                 <path d="M2 2L8 8M8 2L2 8" strokeLinecap="round"/>
               </svg>
-            </div>
-          </button>
-        </div>
-      </div>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
 
       {/* Suggestions */}
-      <div className="flex-1 overflow-y-auto pb-24 px-4">
-        <h2 className="text-white font-semibold text-lg mb-4">Suggestions</h2>
-        
-        <div className="space-y-4">
+      <View className="flex-1 overflow-y-auto pb-24 px-4">
+        <Text className="text-white font-semibold text-lg mb-4 block">Suggestions</Text>
+
+        <View className="space-y-4">
           {filteredSuggestions.map((suggestion) => (
-            <div key={suggestion.id} className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
+            <View key={suggestion.id} className="flex items-center gap-3">
+              <View className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
                 {suggestion.avatar && (
-                  <img src={suggestion.avatar} alt={suggestion.name} className="w-full h-full object-cover" />
+                  <Image source={suggestion.avatar} alt={suggestion.name} className="w-full h-full object-cover" />
                 )}
-              </div>
-              <div>
-                <p className="text-white font-semibold text-base">{suggestion.name}</p>
-                <p className="text-white/60 text-sm">{suggestion.username}</p>
-              </div>
-            </div>
+              </View>
+              <View>
+                <Text className="text-white font-semibold text-base block">{suggestion.name}</Text>
+                <Text className="text-white/60 text-sm block">{suggestion.username}</Text>
+              </View>
+            </View>
           ))}
           {filteredSuggestions.length === 0 && (
-            <p className="text-white/60 text-sm">No results found</p>
+            <Text className="text-white/60 text-sm">No results found</Text>
           )}
-        </div>
-      </div>
+        </View>
+      </View>
 
       <BottomNavigation />
-    </div>
+    </View>
   );
 };
 

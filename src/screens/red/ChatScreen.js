@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { View, Text, TextInput, TouchableOpacity } from '../../components/primitives';
 import StatusBar from '../../components/red/StatusBar';
-import { 
-  BackArrowIcon, 
-  MoreIcon, 
-  CameraIcon, 
-  AttachmentIcon, 
+import {
+  BackArrowIcon,
+  MoreIcon,
+  CameraIcon,
+  AttachmentIcon,
   SendIcon,
-  CheckIcon 
+  CheckIcon
 } from '../../components/icons/NavIcons';
 
 const mockMessages = [
@@ -20,7 +21,6 @@ const ChatScreen = () => {
   const { chatId } = useParams();
   const [messageText, setMessageText] = useState('');
 
-  // Get contact name from chatId
   const getContactName = () => {
     const nameMap = {
       'ali-akbar': 'Ali Akbar',
@@ -42,100 +42,98 @@ const ChatScreen = () => {
 
   const handleSend = () => {
     if (messageText.trim()) {
-      // In a real app, this would send the message
       setMessageText('');
     }
   };
 
   return (
-    <div className="app-container flex flex-col">
+    <View className="app-container flex flex-col">
       <StatusBar />
-      
+
       {/* Chat Header */}
-      <div className="chat-header">
-        <button 
-          onClick={handleBack}
+      <View className="chat-header">
+        <TouchableOpacity
+          onPress={handleBack}
           className="w-10 h-10 rounded-full flex items-center justify-center bg-card border border-border"
         >
           <BackArrowIcon size={20} color="currentColor" />
-        </button>
+        </TouchableOpacity>
 
-        <div className="avatar-container">
-          <div className="avatar" />
-        </div>
+        <View className="avatar-container">
+          <View className="avatar" />
+        </View>
 
-        <div className="flex-1">
-          <div className="flex items-center">
-            <span className="text-primary-foreground font-semibold text-base">
+        <View className="flex-1">
+          <View className="flex items-center">
+            <Text className="text-primary-foreground font-semibold text-base">
               {getContactName()}
-            </span>
-            <span className="inline-flex items-center justify-center w-4 h-4 rounded-full ml-1 bg-status-verified">
+            </Text>
+            <Text className="inline-flex items-center justify-center w-4 h-4 rounded-full ml-1 bg-status-verified">
               <CheckIcon size={10} color="currentColor" />
-            </span>
-          </div>
-          <p className="text-status-online text-sm">Online</p>
-        </div>
+            </Text>
+          </View>
+          <Text className="text-status-online text-sm block">Online</Text>
+        </View>
 
-        <button className="w-10 h-10 flex items-center justify-center text-primary-foreground">
+        <TouchableOpacity className="w-10 h-10 flex items-center justify-center text-primary-foreground">
           <MoreIcon size={24} color="currentColor" />
-        </button>
-      </div>
+        </TouchableOpacity>
+      </View>
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto px-4 py-4">
+      <View className="flex-1 overflow-y-auto px-4 py-4">
         {/* Date Separator */}
-        <div className="flex justify-center mb-4">
-          <span className="text-white/60 text-sm">Today</span>
-        </div>
+        <View className="flex justify-center mb-4">
+          <Text className="text-white/60 text-sm">Today</Text>
+        </View>
 
         {/* Messages */}
-        <div className="flex flex-col gap-4">
+        <View className="flex flex-col gap-4">
           {mockMessages.map((message) => (
-            <div
+            <View
               key={message.id}
               className={`flex ${message.isSent ? 'justify-end' : 'justify-start'}`}
             >
-              <div
+              <View
                 className={`message-bubble ${
                   message.isSent ? 'message-sent' : 'message-received'
                 }`}
               >
-                {message.text}
-              </div>
-            </div>
+                <Text>{message.text}</Text>
+              </View>
+            </View>
           ))}
-        </div>
-      </div>
+        </View>
+      </View>
 
       {/* Message Input */}
-      <div className="chat-input-container">
-        <button className="w-8 h-8 flex items-center justify-center text-white/60">
+      <View className="chat-input-container">
+        <TouchableOpacity className="w-8 h-8 flex items-center justify-center text-white/60">
           <CameraIcon size={22} color="currentColor" />
-        </button>
+        </TouchableOpacity>
 
-        <div className="flex-1">
-          <input
-            type="text"
+        <View className="flex-1">
+          <TextInput
             placeholder="Type a message..."
             value={messageText}
-            onChange={(e) => setMessageText(e.target.value)}
+            onChangeText={setMessageText}
             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
             className="chat-input w-full"
           />
-        </div>
+        </View>
 
-        <button className="w-8 h-8 flex items-center justify-center text-muted-foreground">
+        <TouchableOpacity className="w-8 h-8 flex items-center justify-center text-muted-foreground">
           <AttachmentIcon size={22} color="currentColor" />
-        </button>
+        </TouchableOpacity>
 
-        <button 
-          onClick={handleSend}
+        <TouchableOpacity
+          onPress={handleSend}
           className="w-8 h-8 flex items-center justify-center text-muted-foreground"
         >
           <SendIcon size={22} color="currentColor" />
-        </button>
-      </div>
-    </div>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
