@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
 import menteeAvatar from '../../assets/mentee-avatar.png';
@@ -45,36 +46,36 @@ const MenteesScreen = () => {
   };
 
   return (
-    <div className="app-container">
+    <View className="app-container">
       <StatusBar />
       
       {/* Header */}
-      <div className="px-4 pt-4 pb-3">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-white text-2xl font-extrabold tracking-wide">MENTEES</h1>
+      <View className="px-4 pt-4 pb-3">
+        <View className="flex items-center justify-between mb-6">
+          <Text className="text-white text-2xl font-extrabold tracking-wide">MENTEES</Text>
           {/* Dollar Icon */}
-          <img src={dollarIcon} alt="Dollar" className="w-10 h-10" />
-        </div>
-      </div>
+          <Image source={{ uri: dollarIcon }} accessibilityLabel="Dollar" className="w-10 h-10" />
+        </View>
+      </View>
 
       {/* Classes List */}
-      <div className="flex-1 overflow-y-auto pb-24">
+      <View className="flex-1 overflow-y-auto pb-24">
         {classesData.map((classItem) => {
           const isExpanded = expandedClasses.includes(classItem.id);
           
           return (
-            <div key={classItem.id}>
+            <View key={classItem.id}>
               {/* Class Header */}
-              <button 
-                onClick={() => toggleClass(classItem.id)}
+              <TouchableOpacity 
+                onPress={() => toggleClass(classItem.id)}
                 className="w-full flex items-center justify-between px-4 py-3"
                 style={{
                   background: 'linear-gradient(180deg, rgba(180,50,50,0.9) 0%, rgba(120,30,30,0.8) 100%)'
                 }}
               >
-                <span className="text-white font-bold text-lg">{classItem.name}</span>
-                <div className="flex items-center gap-2">
-                  <span className="text-white/70 text-sm">{classItem.code}</span>
+                <Text className="text-white font-bold text-lg">{classItem.name}</Text>
+                <View className="flex items-center gap-2">
+                  <Text className="text-white/70 text-sm">{classItem.code}</Text>
                   <svg 
                     width="20" 
                     height="20" 
@@ -84,46 +85,46 @@ const MenteesScreen = () => {
                   >
                     <path d="M5 7.5L10 12.5L15 7.5" stroke="white" strokeOpacity="0.7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </div>
-              </button>
+                </View>
+              </TouchableOpacity>
               
               {/* Students List */}
               {isExpanded && classItem.students.length > 0 && (
-                <div style={{ background: 'linear-gradient(180deg, rgba(60,15,15,0.9) 0%, rgba(40,10,10,0.8) 100%)' }}>
+                <View style={{ background: 'linear-gradient(180deg, rgba(60,15,15,0.9) 0%, rgba(40,10,10,0.8) 100%)' }}>
                   {classItem.students.map((student, index) => (
-                    <div 
+                    <View 
                       key={index} 
                       className="flex items-center justify-between px-4 py-3"
                       style={{ borderBottom: index < classItem.students.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}
                     >
-                      <div className="flex items-center gap-3">
+                      <View className="flex items-center gap-3">
                         {/* Avatar */}
-                        <div className="w-10 h-10 rounded-full overflow-hidden">
-                          <img src={menteeAvatar} alt={student.name} className="w-full h-full object-cover" />
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <span className={`font-medium text-base ${index < 4 ? 'text-red-500' : 'text-white'}`}>{student.name}</span>
+                        <View className="w-10 h-10 rounded-full overflow-hidden">
+                          <Image source={{ uri: menteeAvatar }} accessibilityLabel={student.name} className="w-full h-full" resizeMode="cover" />
+                        </View>
+                        <View className="flex items-center gap-1">
+                          <Text className={`font-medium text-base ${index < 4 ? 'text-red-500' : 'text-white'}`}>{student.name}</Text>
                           {student.isVerified && (
-                            <img src={verifiedBadge} alt="Verified" className="w-5 h-5" />
+                            <Image source={{ uri: verifiedBadge }} accessibilityLabel="Verified" className="w-5 h-5" />
                           )}
-                        </div>
-                      </div>
+                        </View>
+                      </View>
                       {student.hasRedStar && (
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="#EF4444">
                           <path d="M8 0L10.2 5.1L16 5.8L12 9.9L13 16L8 13.1L3 16L4 9.9L0 5.8L5.8 5.1L8 0Z"/>
                         </svg>
                       )}
-                    </div>
+                    </View>
                   ))}
-                </div>
+                </View>
               )}
-            </div>
+            </View>
           );
         })}
-      </div>
+      </View>
 
       <BottomNavigation />
-    </div>
+    </View>
   );
 };
 
