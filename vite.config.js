@@ -5,17 +5,6 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  esbuild: {
-    loader: "jsx",
-    include: /\.js$/,
-  },
-  optimizeDeps: {
-    esbuildOptions: {
-      loader: {
-        ".js": "jsx",
-      },
-    },
-  },
   server: {
     host: "::",
     port: 8080,
@@ -23,14 +12,7 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  plugins: [
-    react({
-      parserConfig(id) {
-        if (id.endsWith(".js") || id.endsWith(".jsx")) return { syntax: "ecmascript", jsx: true };
-      },
-    }),
-    mode === "development" && componentTagger(),
-  ].filter(Boolean),
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -26,7 +26,7 @@ const navItems = [
   { id: 'messages', label: 'Messages', icon: MessagesIcon, path: '/' },
   { id: 'promo', label: 'Promo', icon: PromoIcon, path: '/institutes' },
   { id: 'mentees', label: 'Mentees', icon: MenteesIcon, path: '/mentees' },
-  { id: 'profile', label: 'Profile', icon: ProfileIconComponent, path: '/profile' },
+  { id: 'profile', label: 'Profile', icon: ProfileIconComponent, path: null },
 ];
 
 const BottomNavigation = () => {
