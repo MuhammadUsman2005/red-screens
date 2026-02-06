@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react({
       parserConfig(id) {
-        if (id.endsWith(".js")) return { syntax: "ecmascript", jsx: true };
+        if (id.endsWith(".js") || id.endsWith(".jsx")) return { syntax: "ecmascript", jsx: true };
       },
     }),
     mode === "development" && componentTagger(),
