@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigate } from 'react-router-dom';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
@@ -42,34 +41,34 @@ const NotificationsScreen = () => {
   const renderSocialTab = () => (
     <>
       {/* Today Section */}
-      <View className="mb-6">
-        <Text className="text-white font-semibold text-base mb-4">Today</Text>
-        <View className="space-y-4">
+      <div className="mb-6">
+        <h3 className="text-white font-semibold text-base mb-4">Today</h3>
+        <div className="space-y-4">
           {socialNotificationsToday.map((notification) => (
-            <View key={notification.id} className="flex items-center gap-3">
-              <View className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
+            <div key={notification.id} className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
                 {notification.avatar && (
-                  <Image source={{ uri: notification.avatar }} accessibilityLabel={notification.user} className="w-full h-full" resizeMode="cover" />
+                  <img src={notification.avatar} alt={notification.user} className="w-full h-full object-cover" />
                 )}
-              </View>
-              <View className="flex-1">
-                <Text className="text-white text-sm">
-                  <Text className="font-semibold">{notification.user}</Text> {notification.action}
-                </Text>
-                <Text className="text-white/50 text-xs">{notification.time}</Text>
-              </View>
-            </View>
+              </div>
+              <div className="flex-1">
+                <p className="text-white text-sm">
+                  <span className="font-semibold">{notification.user}</span> {notification.action}
+                </p>
+                <p className="text-white/50 text-xs">{notification.time}</p>
+              </div>
+            </div>
           ))}
-        </View>
-      </View>
+        </div>
+      </div>
 
       {/* This Week Section */}
-      <View>
-        <Text className="text-white font-semibold text-base mb-4">This Week</Text>
-        <View className="space-y-4">
+      <div>
+        <h3 className="text-white font-semibold text-base mb-4">This Week</h3>
+        <div className="space-y-4">
           {achievementNotifications.map((notification) => (
-            <View key={notification.id} className="flex items-start gap-3">
-              <View className="w-12 h-12 rounded-full bg-[#EF4444] flex items-center justify-center flex-shrink-0">
+            <div key={notification.id} className="flex items-start gap-3">
+              <div className="w-12 h-12 rounded-full bg-[#EF4444] flex items-center justify-center flex-shrink-0">
                 {notification.icon === 'trophy' ? (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                     <path d="M6 9H4.5C3.67 9 3 8.33 3 7.5V6C3 5.17 3.67 4.5 4.5 4.5H6" strokeLinecap="round"/>
@@ -83,101 +82,102 @@ const NotificationsScreen = () => {
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" strokeLinejoin="round"/>
                   </svg>
                 )}
-              </View>
-              <View className="flex-1">
-                <Text className="text-white text-sm">
+              </div>
+              <div className="flex-1">
+                <p className="text-white text-sm">
                   {notification.highlight ? (
                     <>
-                      {notification.message} <Text className="text-red-400">{notification.highlight}</Text>
+                      {notification.message} <span className="text-red-400">{notification.highlight}</span>
                     </>
                   ) : (
                     notification.message
                   )}
-                </Text>
-                {notification.time && <Text className="text-white/50 text-xs">{notification.time}</Text>}
-              </View>
-            </View>
+                </p>
+                {notification.time && <p className="text-white/50 text-xs">{notification.time}</p>}
+              </div>
+            </div>
           ))}
-        </View>
-      </View>
+        </div>
+      </div>
     </>
   );
 
   const renderStudentTab = () => (
     <>
       {/* Today Section */}
-      <View className="mb-6">
-        <Text className="text-white font-semibold text-base mb-4">Today</Text>
-        <View className="space-y-4">
+      <div className="mb-6">
+        <h3 className="text-white font-semibold text-base mb-4">Today</h3>
+        <div className="space-y-4">
           {studentNotificationsToday.map((notification) => (
-            <View key={notification.id} className="flex items-center gap-3">
-              <View className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
+            <div key={notification.id} className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
                 {notification.avatar && (
-                  <Image source={{ uri: notification.avatar }} accessibilityLabel={notification.user} className="w-full h-full" resizeMode="cover" />
+                  <img src={notification.avatar} alt={notification.user} className="w-full h-full object-cover" />
                 )}
-              </View>
-              <View className="flex-1">
-                <Text className="text-white text-sm">
+              </div>
+              <div className="flex-1">
+                <p className="text-white text-sm">
                   {notification.id === '1' ? (
-                    <>Hurray! <Text className="font-semibold">{notification.user}</Text> {notification.action}</>
+                    <>Hurray! <span className="font-semibold">{notification.user}</span> {notification.action}</>
                   ) : (
-                    <><Text className="font-semibold">{notification.user}</Text> {notification.action}</>
+                    <><span className="font-semibold">{notification.user}</span> {notification.action}</>
                   )}
-                </Text>
-                <Text className="text-white/50 text-xs">{notification.time}</Text>
-              </View>
-            </View>
+                </p>
+                <p className="text-white/50 text-xs">{notification.time}</p>
+              </div>
+            </div>
           ))}
-        </View>
-      </View>
+        </div>
+      </div>
 
       {/* This Week Section */}
-      <View>
-        <Text className="text-white font-semibold text-base mb-4">This Week</Text>
-      </View>
+      <div>
+        <h3 className="text-white font-semibold text-base mb-4">This Week</h3>
+        {/* Empty for now as per screenshot */}
+      </div>
     </>
   );
 
   return (
-    <View className="app-container">
+    <div className="app-container">
       <StatusBar />
       
       {/* Header */}
-      <View className="flex items-center justify-center py-3">
-        <Text className="text-white text-xl font-semibold">Notifications</Text>
-      </View>
+      <div className="flex items-center justify-center py-3">
+        <h1 className="text-white text-xl font-semibold">Notifications</h1>
+      </div>
 
       {/* Tabs */}
-      <View className="flex items-center gap-3 px-4 mb-6">
-        <TouchableOpacity
-          onPress={() => setActiveTab('social')}
+      <div className="flex items-center gap-3 px-4 mb-6">
+        <button
+          onClick={() => setActiveTab('social')}
           className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
             activeTab === 'social'
-              ? 'bg-[#EF4444]'
-              : 'bg-transparent border border-white/40'
+              ? 'bg-[#EF4444] text-white'
+              : 'bg-transparent border border-white/40 text-white/80'
           }`}
         >
-          <Text className={activeTab === 'social' ? 'text-white' : 'text-white/80'}>Social</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => setActiveTab('student')}
+          Social
+        </button>
+        <button
+          onClick={() => setActiveTab('student')}
           className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
             activeTab === 'student'
-              ? 'bg-[#EF4444]'
-              : 'bg-transparent border border-white/40'
+              ? 'bg-[#EF4444] text-white'
+              : 'bg-transparent border border-white/40 text-white/80'
           }`}
         >
-          <Text className={activeTab === 'student' ? 'text-white' : 'text-white/80'}>Student</Text>
-        </TouchableOpacity>
-      </View>
+          Student
+        </button>
+      </div>
 
       {/* Content */}
-      <View className="flex-1 overflow-y-auto pb-24 px-4">
+      <div className="flex-1 overflow-y-auto pb-24 px-4">
         {activeTab === 'social' ? renderSocialTab() : renderStudentTab()}
-      </View>
+      </div>
 
       <BottomNavigation />
-    </View>
+    </div>
   );
 };
 

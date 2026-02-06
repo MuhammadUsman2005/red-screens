@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   HomeIcon, 
@@ -10,12 +9,12 @@ import {
 import profileIcon from '@/assets/profile-icon.png';
 
 const ProfileIconComponent = ({ size = 24, color }) => (
-  <Image 
-    source={{ uri: profileIcon }} 
-    accessibilityLabel="Profile" 
+  <img 
+    src={profileIcon} 
+    alt="Profile" 
+    width={size} 
+    height={size}
     style={{ 
-      width: size, 
-      height: size,
       filter: color === '#EF4444' ? 'none' : 'brightness(0) invert(1) opacity(0.6)'
     }}
   />
@@ -41,28 +40,28 @@ const BottomNavigation = () => {
   };
 
   return (
-    <View className="bottom-nav">
+    <nav className="bottom-nav">
       {navItems.map((item) => {
         const active = isActive(item.path);
         const IconComponent = item.icon;
         
         return (
-          <TouchableOpacity
+          <button
             key={item.id}
-            onPress={() => item.path && navigate(item.path)}
+            onClick={() => item.path && navigate(item.path)}
             className={`nav-item ${active ? 'nav-item-active' : ''}`}
           >
-            <View className="nav-icon-wrapper flex items-center justify-center">
+            <div className="nav-icon-wrapper flex items-center justify-center">
               <IconComponent 
                 size={22} 
                 color="rgba(255, 255, 255, 0.6)"
               />
-            </View>
-            <Text className="nav-item-text">{item.label}</Text>
-          </TouchableOpacity>
+            </div>
+            <span className="nav-item-text">{item.label}</span>
+          </button>
         );
       })}
-    </View>
+    </nav>
   );
 };
 

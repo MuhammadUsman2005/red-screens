@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigate } from 'react-router-dom';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
@@ -39,72 +38,72 @@ const SearchScreen = () => {
   };
 
   return (
-    <View className="app-container">
+    <div className="app-container">
       <StatusBar />
       
       {/* Header */}
-      <View className="flex items-center px-4 py-3">
-        <TouchableOpacity onPress={() => navigate('/home')} className="text-white mr-4">
+      <div className="flex items-center px-4 py-3">
+        <button onClick={() => navigate('/home')} className="text-white mr-4">
           <BackArrowIcon size={24} color="white" />
-        </TouchableOpacity>
-        <Text className="text-white text-xl font-semibold flex-1 text-center pr-10">Search</Text>
-      </View>
+        </button>
+        <h1 className="text-white text-xl font-semibold flex-1 text-center pr-10">Search</h1>
+      </div>
 
       {/* Search Input */}
-      <View className="px-4 mb-6">
-        <View className="relative">
-          <View className="absolute left-4 top-1/2 -translate-y-1/2">
+      <div className="px-4 mb-6">
+        <div className="relative">
+          <div className="absolute left-4 top-1/2 -translate-y-1/2">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2">
               <circle cx="11" cy="11" r="7"/>
               <path d="M16 16L20 20" strokeLinecap="round"/>
             </svg>
-          </View>
-          <TextInput
+          </div>
+          <input
+            type="text"
             placeholder="Search"
             value={searchQuery}
-            onChangeText={(text) => setSearchQuery(text)}
-            placeholderTextColor="rgba(255,255,255,0.6)"
-            className="w-full bg-[#5A1A1A] rounded-full py-3 pl-12 pr-12 text-white text-sm outline-none border border-white/20"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-[#5A1A1A] rounded-full py-3 pl-12 pr-12 text-white placeholder-white/60 text-sm outline-none border border-white/20"
           />
-          <TouchableOpacity 
-            onPress={clearSearch}
+          <button 
+            onClick={clearSearch}
             className="absolute right-4 top-1/2 -translate-y-1/2"
           >
-            <View className="w-5 h-5 rounded-full border border-white/60 flex items-center justify-center">
+            <div className="w-5 h-5 rounded-full border border-white/60 flex items-center justify-center">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5">
                 <path d="M2 2L8 8M8 2L2 8" strokeLinecap="round"/>
               </svg>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+            </div>
+          </button>
+        </div>
+      </div>
 
       {/* Suggestions */}
-      <View className="flex-1 overflow-y-auto pb-24 px-4">
-        <Text className="text-white font-semibold text-lg mb-4">Suggestions</Text>
+      <div className="flex-1 overflow-y-auto pb-24 px-4">
+        <h2 className="text-white font-semibold text-lg mb-4">Suggestions</h2>
         
-        <View className="space-y-4">
+        <div className="space-y-4">
           {filteredSuggestions.map((suggestion) => (
-            <View key={suggestion.id} className="flex items-center gap-3">
-              <View className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
+            <div key={suggestion.id} className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
                 {suggestion.avatar && (
-                  <Image source={{ uri: suggestion.avatar }} accessibilityLabel={suggestion.name} className="w-full h-full" resizeMode="cover" />
+                  <img src={suggestion.avatar} alt={suggestion.name} className="w-full h-full object-cover" />
                 )}
-              </View>
-              <View>
-                <Text className="text-white font-semibold text-base">{suggestion.name}</Text>
-                <Text className="text-white/60 text-sm">{suggestion.username}</Text>
-              </View>
-            </View>
+              </div>
+              <div>
+                <p className="text-white font-semibold text-base">{suggestion.name}</p>
+                <p className="text-white/60 text-sm">{suggestion.username}</p>
+              </div>
+            </div>
           ))}
           {filteredSuggestions.length === 0 && (
-            <Text className="text-white/60 text-sm">No results found</Text>
+            <p className="text-white/60 text-sm">No results found</p>
           )}
-        </View>
-      </View>
+        </div>
+      </div>
 
       <BottomNavigation />
-    </View>
+    </div>
   );
 };
 
