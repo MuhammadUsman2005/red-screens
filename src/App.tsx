@@ -28,6 +28,7 @@ const App = () => (
           <Route path="/notifications" element={<NotificationsScreen />} />
           <Route path="/institutes" element={<InstitutesScreen />} />
           <Route path="/mentees" element={<MenteesScreen />} />
+          {/* Profile route removed - no screen needed */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

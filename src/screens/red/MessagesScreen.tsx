@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput } from '@/primitives';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
-import ChatListItem from '../../components/red/ChatListItem';
+import ChatListItem, { ChatContact } from '../../components/red/ChatListItem';
 import { SearchIcon } from '../../components/icons/NavIcons';
 
-const mockContacts = [
+const mockContacts: ChatContact[] = [
   { id: 'ali-akbar', name: 'Ali Akbar', lastMessage: 'Hello world', time: '3:15 pm', isOnline: false, hasUnread: true, verifiedType: 'blue' },
   { id: 'talha-nawaz', name: 'Talha Nawaz', lastMessage: 'Hello world', time: '3:15 pm', isOnline: false, hasUnread: true, verifiedType: 'red' },
   { id: 'ayaan-hassan', name: 'Ayaan Hassan', lastMessage: 'Hello world', time: '3:15 pm', isOnline: false, hasUnread: false, verifiedType: 'blue' },
@@ -17,7 +16,7 @@ const mockContacts = [
   { id: 'rohail-niazi', name: 'Rohail Niazi', lastMessage: 'Hello world', time: '3:15 pm', isOnline: false, hasUnread: false, verifiedType: 'green' },
 ];
 
-const MessagesScreen = () => {
+const MessagesScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredContacts = mockContacts.filter(contact =>
@@ -25,39 +24,39 @@ const MessagesScreen = () => {
   );
 
   return (
-    <View className="app-container">
+    <div className="app-container">
       <StatusBar />
       
       {/* Header */}
-      <View className="px-4 pt-4 pb-3">
-        <Text className="block text-white text-3xl font-bold mb-4">Chats</Text>
+      <div className="px-4 pt-4 pb-3">
+        <h1 className="text-white text-3xl font-bold mb-4">Chats</h1>
         
         {/* Search Bar */}
-        <View className="relative">
+        <div className="relative">
           <SearchIcon 
             size={18} 
             color="rgba(255, 255, 255, 0.5)" 
             className="absolute left-3 top-1/2 transform -translate-y-1/2"
           />
-          <TextInput
+          <input
             type="text"
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input pl-10"
           />
-        </View>
-      </View>
+        </div>
+      </div>
 
       {/* Chat List */}
-      <View className="flex-1 overflow-y-auto pb-24">
+      <div className="flex-1 overflow-y-auto pb-24">
         {filteredContacts.map((contact) => (
           <ChatListItem key={contact.id} contact={contact} />
         ))}
-      </View>
+      </div>
 
       <BottomNavigation />
-    </View>
+    </div>
   );
 };
 

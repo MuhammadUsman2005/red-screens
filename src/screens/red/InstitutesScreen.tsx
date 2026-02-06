@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from '@/primitives';
 import StatusBar from '../../components/red/StatusBar';
 import BottomNavigation from '../../components/red/BottomNavigation';
 import AddInstituteModal from '../../components/red/AddInstituteModal';
 import dollarIcon from '../../assets/dollar-icon.png';
 
-const institutesData = [
+interface ClassItem {
+  name: string;
+  code: string;
+}
+
+interface Institute {
+  id: string;
+  name: string;
+  code: string;
+  classes: ClassItem[];
+}
+
+const institutesData: Institute[] = [
   {
     id: 'abc-school',
     name: 'ABC School',
@@ -28,56 +39,57 @@ const institutesData = [
   },
 ];
 
-const InstitutesScreen = () => {
-  const [expandedInstitutes, setExpandedInstitutes] = useState(['abc-school', 'abc-college']);
+const InstitutesScreen: React.FC = () => {
+  const [expandedInstitutes, setExpandedInstitutes] = useState<string[]>(['abc-school', 'abc-college']);
   const [showAddModal, setShowAddModal] = useState(false);
 
-  const toggleInstitute = (id) => {
+  const toggleInstitute = (id: string) => {
     setExpandedInstitutes(prev =>
       prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
     );
   };
 
   return (
-    <View className="app-container">
+    <div className="app-container">
       <StatusBar />
       
       {/* Header */}
-      <View className="px-4 pt-4 pb-3">
-        <View className="flex items-center justify-between mb-6">
-          <Text className="text-white text-2xl font-extrabold tracking-wide">INSTITUTES</Text>
-          <Image src={dollarIcon} alt="Dollar" className="w-10 h-10" />
-        </View>
+      <div className="px-4 pt-4 pb-3">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-white text-2xl font-extrabold tracking-wide">INSTITUTES</h1>
+          {/* Dollar Icon */}
+          <img src={dollarIcon} alt="Dollar" className="w-10 h-10" />
+        </div>
         
         {/* School/Colleges Button */}
-        <TouchableOpacity 
+        <button 
           onClick={() => setShowAddModal(true)}
           className="institutes-header-button"
         >
-          <Text className="text-white font-bold text-base tracking-wide">SCHOOL/COLLEGES</Text>
-          <View className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
+          <span className="text-white font-bold text-base tracking-wide">SCHOOL/COLLEGES</span>
+          <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M10 4V16M4 10H16" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-          </View>
-        </TouchableOpacity>
-      </View>
+          </div>
+        </button>
+      </div>
 
       {/* Institutes List */}
-      <View className="flex-1 overflow-y-auto pb-24 px-4">
+      <div className="flex-1 overflow-y-auto pb-24 px-4">
         {institutesData.map((institute) => {
           const isExpanded = expandedInstitutes.includes(institute.id);
           
           return (
-            <View key={institute.id} className="mb-2">
+            <div key={institute.id} className="mb-2">
               {/* Institute Header */}
-              <TouchableOpacity 
+              <button 
                 onClick={() => toggleInstitute(institute.id)}
                 className="institute-item w-full"
               >
-                <Text className="text-white font-bold text-lg">{institute.name}</Text>
-                <View className="flex items-center gap-2">
-                  <Text className="text-white/70 text-sm">{institute.code}</Text>
+                <span className="text-white font-bold text-lg">{institute.name}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-white/70 text-sm">{institute.code}</span>
                   <svg 
                     width="20" 
                     height="20" 
@@ -87,35 +99,36 @@ const InstitutesScreen = () => {
                   >
                     <path d="M5 12.5L10 7.5L15 12.5" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </View>
-              </TouchableOpacity>
+                </div>
+              </button>
               
               {/* Classes List */}
               {isExpanded && (
-                <View className="institute-classes">
+                <div className="institute-classes">
                   {institute.classes.map((classItem, index) => (
-                    <View 
+                    <div 
                       key={index} 
                       className="class-item"
                     >
-                      <Text className="text-white/90 text-base font-semibold">{classItem.name}</Text>
-                      <Text className="text-white/60 text-sm">{classItem.code}</Text>
-                    </View>
+                      <span className="text-white/90 text-base font-semibold">{classItem.name}</span>
+                      <span className="text-white/60 text-sm">{classItem.code}</span>
+                    </div>
                   ))}
-                </View>
+                </div>
               )}
-            </View>
+            </div>
           );
         })}
-      </View>
+      </div>
 
       <BottomNavigation />
 
+      {/* Add Institute Modal */}
       <AddInstituteModal 
         isOpen={showAddModal} 
         onClose={() => setShowAddModal(false)} 
       />
-    </View>
+    </div>
   );
 };
 

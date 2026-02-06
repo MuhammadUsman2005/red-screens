@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { View, Text, Image, TouchableOpacity } from '@/primitives';
 import { 
   HomeIcon, 
   MessagesIcon, 
@@ -9,8 +8,15 @@ import {
 } from '../icons/NavIcons';
 import profileIcon from '@/assets/profile-icon.png';
 
-const ProfileIconComponent = ({ size = 24, color }) => (
-  <Image 
+interface NavItem {
+  id: string;
+  label: string;
+  icon: React.FC<{ size?: number; color?: string }>;
+  path: string | null;
+}
+
+const ProfileIconComponent: React.FC<{ size?: number; color?: string }> = ({ size = 24, color }) => (
+  <img 
     src={profileIcon} 
     alt="Profile" 
     width={size} 
@@ -21,7 +27,7 @@ const ProfileIconComponent = ({ size = 24, color }) => (
   />
 );
 
-const navItems = [
+const navItems: NavItem[] = [
   { id: 'home', label: 'Home', icon: HomeIcon, path: '/home' },
   { id: 'messages', label: 'Messages', icon: MessagesIcon, path: '/' },
   { id: 'promo', label: 'Promo', icon: PromoIcon, path: '/institutes' },
@@ -29,11 +35,11 @@ const navItems = [
   { id: 'profile', label: 'Profile', icon: ProfileIconComponent, path: null },
 ];
 
-const BottomNavigation = () => {
+const BottomNavigation: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isActive = (path) => {
+  const isActive = (path: string) => {
     if (path === '/') {
       return location.pathname === '/' || location.pathname.startsWith('/chat');
     }
@@ -41,28 +47,28 @@ const BottomNavigation = () => {
   };
 
   return (
-    <View className="bottom-nav">
+    <nav className="bottom-nav">
       {navItems.map((item) => {
         const active = isActive(item.path);
         const IconComponent = item.icon;
         
         return (
-          <TouchableOpacity
+          <button
             key={item.id}
             onClick={() => item.path && navigate(item.path)}
             className={`nav-item ${active ? 'nav-item-active' : ''}`}
           >
-            <View className="nav-icon-wrapper flex items-center justify-center">
+            <div className="nav-icon-wrapper flex items-center justify-center">
               <IconComponent 
                 size={22} 
                 color="rgba(255, 255, 255, 0.6)"
               />
-            </View>
-            <Text className="nav-item-text">{item.label}</Text>
-          </TouchableOpacity>
+            </div>
+            <span className="nav-item-text">{item.label}</span>
+          </button>
         );
       })}
-    </View>
+    </nav>
   );
 };
 

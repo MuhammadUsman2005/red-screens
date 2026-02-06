@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput } from '@/primitives';
 import karachiMap from '../../assets/karachi-map.png';
 
-const AddInstituteModal = ({ isOpen, onClose }) => {
+interface AddInstituteModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const AddInstituteModal: React.FC<AddInstituteModalProps> = ({ isOpen, onClose }) => {
   const [instituteType, setInstituteType] = useState('');
   const [instituteName, setInstituteName] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
@@ -14,42 +18,42 @@ const AddInstituteModal = ({ isOpen, onClose }) => {
   return (
     <>
       {/* Backdrop */}
-      <View 
+      <div 
         className="fixed inset-0 bg-black/50 z-40"
         onClick={onClose}
       />
       
-      {/* Modal */}
-      <View className="fixed inset-x-0 bottom-0 z-50 max-w-md mx-auto">
-        <View 
+      {/* Modal - Using Red Gradient Background */}
+      <div className="fixed inset-x-0 bottom-0 z-50 max-w-md mx-auto">
+        <div 
           className="rounded-t-3xl px-6 py-6"
           style={{
             background: 'linear-gradient(180deg, #852121 0%, #4E0C0C 50%, #380303 100%)'
           }}
         >
           {/* Header */}
-          <View className="flex items-center gap-3 mb-6">
-            <TouchableOpacity 
+          <div className="flex items-center gap-3 mb-6">
+            <button 
               onClick={onClose}
               className="text-white"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </TouchableOpacity>
-            <Text className="text-white text-xl font-bold">Generate Promo Code</Text>
-          </View>
+            </button>
+            <h2 className="text-white text-xl font-bold">Generate Promo Code</h2>
+          </div>
 
           {/* Type of Institute Dropdown */}
-          <View className="mb-4">
-            <TouchableOpacity 
+          <div className="mb-4">
+            <button 
               onClick={() => setShowDropdown(!showDropdown)}
               className="w-full flex items-center justify-between px-5 py-4 rounded-full text-left"
               style={{ background: 'rgba(0,0,0,0.3)' }}
             >
-              <Text className={instituteType ? 'text-white font-medium' : 'text-white/70'}>
+              <span className={instituteType ? 'text-white font-medium' : 'text-white/70'}>
                 {instituteType || 'Type of Institute'}
-              </Text>
+              </span>
               <svg 
                 width="20" 
                 height="20" 
@@ -59,12 +63,12 @@ const AddInstituteModal = ({ isOpen, onClose }) => {
               >
                 <path d="M5 7.5L10 12.5L15 7.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </TouchableOpacity>
+            </button>
             
             {showDropdown && (
-              <View className="mt-2 rounded-xl overflow-hidden" style={{ background: 'rgba(0,0,0,0.4)' }}>
+              <div className="mt-2 rounded-xl overflow-hidden" style={{ background: 'rgba(0,0,0,0.4)' }}>
                 {instituteTypes.map((type) => (
-                  <TouchableOpacity
+                  <button
                     key={type}
                     onClick={() => {
                       setInstituteType(type);
@@ -73,15 +77,15 @@ const AddInstituteModal = ({ isOpen, onClose }) => {
                     className="w-full text-left px-5 py-3 text-white hover:bg-white/10 transition-colors"
                   >
                     {type}
-                  </TouchableOpacity>
+                  </button>
                 ))}
-              </View>
+              </div>
             )}
-          </View>
+          </div>
 
           {/* Name of Institute Input */}
-          <View className="mb-6">
-            <TextInput
+          <div className="mb-6">
+            <input
               type="text"
               placeholder="Name of Institute"
               value={instituteName}
@@ -89,29 +93,29 @@ const AddInstituteModal = ({ isOpen, onClose }) => {
               className="w-full px-5 py-4 rounded-full text-white placeholder-white/70"
               style={{ background: 'rgba(0,0,0,0.3)', border: 'none', outline: 'none' }}
             />
-          </View>
+          </div>
 
           {/* Location Section */}
-          <View className="mb-6">
-            <Text className="block text-white font-bold text-lg mb-3">Location</Text>
-            <View className="rounded-xl overflow-hidden h-40">
-              <Image 
+          <div className="mb-6">
+            <h3 className="text-white font-bold text-lg mb-3">Location</h3>
+            <div className="rounded-xl overflow-hidden h-40">
+              <img 
                 src={karachiMap} 
                 alt="Karachi, Pakistan" 
                 className="w-full h-full object-cover"
               />
-            </View>
-          </View>
+            </div>
+          </div>
 
           {/* Generate Promo Code Button */}
-          <TouchableOpacity 
+          <button 
             className="w-full py-4 rounded-full text-white font-bold text-base"
             style={{ background: '#DC2626' }}
           >
             Generate Promo Code
-          </TouchableOpacity>
-        </View>
-      </View>
+          </button>
+        </div>
+      </div>
     </>
   );
 };
