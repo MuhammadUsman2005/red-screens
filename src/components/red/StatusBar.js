@@ -1,13 +1,13 @@
 import React from 'react';
+import { View, Text } from '@/primitives';
 
-const StatusBar: React.FC = () => {
-  // Fixed time as per Figma design
+const StatusBar = () => {
   const displayTime = '11:39 am';
 
   return (
-    <div className="status-bar">
-      <span>{displayTime}</span>
-      <div className="flex items-center gap-1">
+    <View className="status-bar">
+      <Text>{displayTime}</Text>
+      <View className="flex items-center gap-1">
         {/* Signal bars */}
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
           <rect x="0" y="8" width="3" height="4" rx="1" fill="white" />
@@ -28,8 +28,8 @@ const StatusBar: React.FC = () => {
           <rect x="2" y="2" width="17" height="8" rx="1.5" fill="white" />
           <path d="M23 4V8C24.1046 8 25 7.10457 25 6V6C25 4.89543 24.1046 4 23 4Z" fill="white" fillOpacity="0.4" />
         </svg>
-      </div>
-    </div>
+      </View>
+    </View>
   );
 };
 
