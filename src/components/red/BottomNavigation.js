@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { View, Text, TouchableOpacity, Image } from '../primitives.js';
 import { 
   HomeIcon, 
   MessagesIcon, 
@@ -9,8 +10,8 @@ import {
 import profileIcon from '@/assets/profile-icon.png';
 
 const ProfileIconComponent = ({ size = 24, color }) => (
-  <img 
-    src={profileIcon} 
+  <Image 
+    source={profileIcon} 
     alt="Profile" 
     width={size} 
     height={size}
@@ -40,28 +41,28 @@ const BottomNavigation = () => {
   };
 
   return (
-    <nav className="bottom-nav">
+    <View className="bottom-nav">
       {navItems.map((item) => {
         const active = isActive(item.path);
         const IconComponent = item.icon;
         
         return (
-          <button
+          <TouchableOpacity
             key={item.id}
-            onClick={() => item.path && navigate(item.path)}
+            onPress={() => item.path && navigate(item.path)}
             className={`nav-item ${active ? 'nav-item-active' : ''}`}
           >
-            <div className="nav-icon-wrapper flex items-center justify-center">
+            <View className="nav-icon-wrapper flex items-center justify-center">
               <IconComponent 
                 size={22} 
                 color="rgba(255, 255, 255, 0.6)"
               />
-            </div>
-            <span className="nav-item-text">{item.label}</span>
-          </button>
+            </View>
+            <Text className="nav-item-text">{item.label}</Text>
+          </TouchableOpacity>
         );
       })}
-    </nav>
+    </View>
   );
 };
 

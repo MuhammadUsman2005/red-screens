@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, ScrollView } from '../../components/primitives.js';
 import StatusBar from '../../components/red/StatusBar.js';
 import BottomNavigation from '../../components/red/BottomNavigation.js';
 import AddInstituteModal from '../../components/red/AddInstituteModal.js';
@@ -38,41 +39,41 @@ const InstitutesScreen = () => {
   };
 
   return (
-    <div className="app-container">
+    <View className="app-container">
       <StatusBar />
       
-      <div className="px-4 pt-4 pb-3">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-white text-2xl font-extrabold tracking-wide">INSTITUTES</h1>
-          <img src={dollarIcon} alt="Dollar" className="w-10 h-10" />
-        </div>
+      <View className="px-4 pt-4 pb-3">
+        <View className="flex items-center justify-between mb-6">
+          <Text className="text-white text-2xl font-extrabold tracking-wide">INSTITUTES</Text>
+          <Image source={dollarIcon} alt="Dollar" className="w-10 h-10" />
+        </View>
         
-        <button 
-          onClick={() => setShowAddModal(true)}
+        <TouchableOpacity 
+          onPress={() => setShowAddModal(true)}
           className="institutes-header-button"
         >
-          <span className="text-white font-bold text-base tracking-wide">SCHOOL/COLLEGES</span>
-          <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
+          <Text className="text-white font-bold text-base tracking-wide">SCHOOL/COLLEGES</Text>
+          <View className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M10 4V16M4 10H16" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-          </div>
-        </button>
-      </div>
+          </View>
+        </TouchableOpacity>
+      </View>
 
-      <div className="flex-1 overflow-y-auto pb-24 px-4">
+      <ScrollView className="flex-1 pb-24 px-4">
         {institutesData.map((institute) => {
           const isExpanded = expandedInstitutes.includes(institute.id);
           
           return (
-            <div key={institute.id} className="mb-2">
-              <button 
-                onClick={() => toggleInstitute(institute.id)}
+            <View key={institute.id} className="mb-2">
+              <TouchableOpacity 
+                onPress={() => toggleInstitute(institute.id)}
                 className="institute-item w-full"
               >
-                <span className="text-white font-bold text-lg">{institute.name}</span>
-                <div className="flex items-center gap-2">
-                  <span className="text-white/70 text-sm">{institute.code}</span>
+                <Text className="text-white font-bold text-lg">{institute.name}</Text>
+                <View className="flex items-center gap-2">
+                  <Text className="text-white/70 text-sm">{institute.code}</Text>
                   <svg 
                     width="20" 
                     height="20" 
@@ -82,26 +83,26 @@ const InstitutesScreen = () => {
                   >
                     <path d="M5 12.5L10 7.5L15 12.5" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </div>
-              </button>
+                </View>
+              </TouchableOpacity>
               
               {isExpanded && (
-                <div className="institute-classes">
+                <View className="institute-classes">
                   {institute.classes.map((classItem, index) => (
-                    <div 
+                    <View 
                       key={index} 
                       className="class-item"
                     >
-                      <span className="text-white/90 text-base font-semibold">{classItem.name}</span>
-                      <span className="text-white/60 text-sm">{classItem.code}</span>
-                    </div>
+                      <Text className="text-white/90 text-base font-semibold">{classItem.name}</Text>
+                      <Text className="text-white/60 text-sm">{classItem.code}</Text>
+                    </View>
                   ))}
-                </div>
+                </View>
               )}
-            </div>
+            </View>
           );
         })}
-      </div>
+      </ScrollView>
 
       <BottomNavigation />
 
@@ -109,7 +110,7 @@ const InstitutesScreen = () => {
         isOpen={showAddModal} 
         onClose={() => setShowAddModal(false)} 
       />
-    </div>
+    </View>
   );
 };
 

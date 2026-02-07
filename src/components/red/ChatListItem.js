@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { View, Text, TouchableOpacity } from '../primitives.js';
 import { CheckIcon } from '../icons/NavIcons.js';
 
 const ChatListItem = ({ contact }) => {
@@ -19,38 +20,38 @@ const ChatListItem = ({ contact }) => {
     };
 
     return (
-      <span className={`inline-flex items-center justify-center w-4 h-4 rounded-full ml-1 ${badgeColors[contact.verifiedType]}`}>
+      <View className={`inline-flex items-center justify-center w-4 h-4 rounded-full ml-1 ${badgeColors[contact.verifiedType]}`}>
         <CheckIcon size={10} color="white" />
-      </span>
+      </View>
     );
   };
 
   return (
-    <div className="chat-list-item" onClick={handleClick}>
-      <div className="avatar-container">
-        <div className="avatar" />
-        {contact.isOnline && <div className="avatar-online" />}
-      </div>
+    <TouchableOpacity className="chat-list-item" onPress={handleClick}>
+      <View className="avatar-container">
+        <View className="avatar" />
+        {contact.isOnline && <View className="avatar-online" />}
+      </View>
 
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center">
-          <span className="text-white font-semibold text-base truncate">
+      <View className="flex-1 min-w-0">
+        <View className="flex items-center">
+          <Text className="text-white font-semibold text-base truncate">
             {contact.name}
-          </span>
+          </Text>
           {getVerifiedBadge()}
-        </div>
-        <p className="text-white/60 text-sm truncate mt-0.5">
+        </View>
+        <Text className="text-white/60 text-sm truncate mt-0.5 block">
           {contact.lastMessage}
-        </p>
-      </div>
+        </Text>
+      </View>
 
-      <div className="flex flex-col items-end gap-1">
-        <span className="text-white/50 text-xs">
+      <View className="flex flex-col items-end gap-1">
+        <Text className="text-white/50 text-xs">
           {contact.time}
-        </span>
-        {contact.hasUnread && <div className="unread-dot" />}
-      </div>
-    </div>
+        </Text>
+        {contact.hasUnread && <View className="unread-dot" />}
+      </View>
+    </TouchableOpacity>
   );
 };
 

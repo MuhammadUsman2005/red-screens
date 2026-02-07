@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View, Text, TextInput, ScrollView } from '../../components/primitives.js';
 import StatusBar from '../../components/red/StatusBar.js';
 import BottomNavigation from '../../components/red/BottomNavigation.js';
 import ChatListItem from '../../components/red/ChatListItem.js';
@@ -24,36 +25,36 @@ const MessagesScreen = () => {
   );
 
   return (
-    <div className="app-container">
+    <View className="app-container">
       <StatusBar />
       
-      <div className="px-4 pt-4 pb-3">
-        <h1 className="text-white text-3xl font-bold mb-4">Chats</h1>
+      <View className="px-4 pt-4 pb-3">
+        <Text className="text-white text-3xl font-bold mb-4 block">Chats</Text>
         
-        <div className="relative">
+        <View className="relative">
           <SearchIcon 
             size={18} 
             color="rgba(255, 255, 255, 0.5)" 
             className="absolute left-3 top-1/2 transform -translate-y-1/2"
           />
-          <input
+          <TextInput
             type="text"
             placeholder="Search"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChangeText={setSearchQuery}
             className="search-input pl-10"
           />
-        </div>
-      </div>
+        </View>
+      </View>
 
-      <div className="flex-1 overflow-y-auto pb-24">
+      <ScrollView className="flex-1 pb-24">
         {filteredContacts.map((contact) => (
           <ChatListItem key={contact.id} contact={contact} />
         ))}
-      </div>
+      </ScrollView>
 
       <BottomNavigation />
-    </div>
+    </View>
   );
 };
 
