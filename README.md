@@ -7,6 +7,7 @@ The project is intended to be easy to understand, update, and extend if needed.
 How to run the project locally:
 
 Clone the repository
+
 git clone <YOUR_GIT_URL>
 cd <PROJECT_DIRECTORY>
 
