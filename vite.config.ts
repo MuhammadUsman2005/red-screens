@@ -13,6 +13,10 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  esbuild: {
+    loader: "jsx",
+    include: /src\/.*\.js$/,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
